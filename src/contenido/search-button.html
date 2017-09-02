@@ -1,0 +1,64 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="../css/base.html">
+
+<dom-module id="search-button">
+	<template>
+		<style include="base">
+			.cajaTexto{
+				-moz-border-radius-topleft: 30px;
+				-webkit-border-top-left-radius: 30px;
+				border-top-left-radius: 30px;
+				-moz-border-radius-bottomleft: 30px;
+				-webkit-border-bottom-left-radius: 30px;
+				border-bottom-left-radius: 30px;
+				outline: 0;
+				height: 3.2rem;
+				width: 63%;
+				border: 1px solid gray;
+			}
+
+			.buttonSearch{
+				border-color: transparent;
+				cursor: pointer;
+				background-color: #4A90E2;
+				-moz-border-radius-topright: 30px;
+				-webkit-border-top-right-radius: 30px;
+				border-top-right-radius: 30px;
+				-moz-border-radius-bottomright: 30px;
+				-webkit-border-bottom-right-radius: 30px;
+				border-bottom-right-radius: 30px;
+				border: 1px solid #848484;
+				outline: 0;
+				height: 3.2rem;
+				width: 25%;
+				padding-right: 10px;
+				font-family: "Avenir Next LT Pro";
+				font-size: 22px;
+				font-weight: normal;
+				color: #FFFFFF;
+				position: relative;
+				left: -5px;
+				top: 2px;
+			}
+		</style>
+
+		<input class="cajaTexto" id="texto" type="text">
+		<button class="buttonSearch" on-click="_search">Buscar</button>
+	</template>
+	<script>
+
+		(function searchButtonDefinition(searchButton){
+			'use strict'
+
+			class SearchButton extends Polymer.Element{
+				static get is(){return 'search-button';}
+			}
+
+			customElements.define(SearchButton.is, SearchButton);
+
+		})(window.searchButton);
+
+	</script>
+</dom-module>

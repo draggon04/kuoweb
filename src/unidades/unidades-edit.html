@@ -1,0 +1,128 @@
+<link rel="import" href="../../bower_components/iron-input/iron-input.html">
+<link rel="import" href="../../bower_components/paper-dialog/paper-dialog.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="../css/base.html">
+
+<dom-module id="unidades-edit">
+	<template>
+
+		<style include="base">
+			.contenedor{
+				display: block;
+			}
+			.fila{
+				display: inline-flex;
+				width: 100%;
+			}
+			.celda{
+				display: inline;
+			}
+
+			label, input{
+				display: block;
+			}
+
+			input{
+				height: 2.5rem;
+			}
+
+			paper-dialog{
+				position: absolute;
+			}
+
+		</style>
+
+		<paper-dialog id="edit">
+			<h1>[[titulo]]</h1>
+			<div class="contenedor">
+				<div class="fila">
+					<div class="celda">
+						<label for="numero">Número</label>
+						<iron-input bind-value="{{nombre}}" allowed-pattern="^[a-zA-Z0-9 _\.\-\/()#+*-.ñÑáéíóúÁÉÍÓÚ]+$" prevent-invalid-input>
+							<input is="iron-input" placeholder="Nombre" pattern="^[a-zA-Z0-9 _\.\-\/()#+*-.ñÑáéíóúÁÉÍÓÚ]+$">
+						</iron-input>
+					</div>
+					<div class="celda">
+						<label for="nombre">Nombre</label>
+						<input type="text" id="nombre">
+					</div>
+					<div class="celda">
+						<label for="estado">Estado</label>
+						<input type="text" id="estado">
+					</div>				
+					<div class="celda">
+						<label for="delegacion">Delegación/Municipio</label>
+						<input type="text" id="delegacion">
+					</div>
+				</div>
+				<div class="fila">
+					<div class="celda">
+						<label for="colonia">Colonia</label>
+						<input type="text" id="colonia">
+					</div>
+					<div class="celda">
+						<label for="cp">Código Postal</label>
+						<input type="text" id="cp">
+					</div>
+					<div class="celda">
+						<label for="calle">Calle</label>
+						<input type="text" id="calle">
+					</div>
+					<div class="celda">
+						<label for="numExt">Num. Exterior</label>
+						<input type="text" id="numExt">
+					</div>
+					<div class="celda">
+						<label for="numInt">Num. Interior</label>
+						<input type="text" id="numInt">
+					</div>
+				</div>				
+				<div class="fila">
+					<div class="celda">
+						<label for="latitud">Latitud</label>
+						<input type="text" id="latitud">
+					</div>
+					<div class="celda">
+						<label for="longitud">Longitud</label>
+						<input type="text" id="longitud">
+					</div>
+				</div>
+			</div>		
+		</paper-dialog>
+	</template>
+	<script>
+		
+		(function unidadesEditDefinition(unidadesEdit){
+			'use strict'
+
+			class UnidadesEdit extends Polymer.Element{
+				static get is(){return 'unidades-edit';}
+
+				static get properties(){
+					return {
+						openDialog:{
+							type:Boolean,
+							value:false,
+							observer:'_openDialog',
+							notify:true
+						}
+					}
+				}
+
+				_openDialog(openDialog){
+					console.log('open-edit-unidad')
+					if(openDialog)
+						this.$.edit.open();
+					this.openDialog=false;
+				}
+
+			}
+
+			customElements.define(UnidadesEdit.is, UnidadesEdit);
+
+		})(window.unidadesEdit);
+
+	</script>
+</dom-module>

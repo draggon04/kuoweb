@@ -1,0 +1,84 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+
+<link rel="import" href="../css/base.html">
+<link rel="import" href="../contenido/search-button.html">
+
+<dom-module id="contenido-view">
+	<template>
+		<style include="base">
+			h2{
+				display: inline;
+			}
+			h2 ::slotted(span) 
+			{
+				color: #4a4a4a;
+				font-size: 3rem;
+				position: relative;
+				top:10px;
+			}
+
+			div#icon{
+				width: 4.5rem;
+				display: inline;
+			}
+
+			div#icon ::slotted(*){
+				color: #4a4a4a;
+				width:  3.5rem;
+				height: 3.5rem;
+			}
+
+			search-button{
+				position: absolute;
+				right: 1px;
+				width: 33%
+			}
+
+			.button-add{
+			    position: relative;
+			    top: 20px;
+			    width: 50px;
+			    height: 50px;
+			    padding: 0;
+			    margin: 0;
+			}
+
+			.img-button{
+				width: 50px;
+			    height: 50px;
+			    margin: 0;
+			    padding: 0;
+			}
+		</style>
+		<div>
+			<div>
+				<div id="icon"><slot name="header-icon"></slot></div>
+				<h2><slot name="header-text"></slot></h2>
+				<paper-button raised on-click="_openEdit" class="button-add"><img class="img-button" src="../../images/btnAdd.PNG" alt=""></paper-button>
+				<search-button></search-button>
+			</div>
+			<slot name="grid"></slot>
+			<slot name="view"></slot>
+			<slot name="edit"></slot>
+		<div>
+
+	</template>
+	<script>		
+		(function contenidoViewDefinition(contenidoView){
+			'use strict'
+
+			class ContenidoView extends Polymer.Element{
+				static get is(){return 'contenido-view';}
+
+				_openEdit(event){
+					this.dispatchEvent(new CustomEvent('open-edit', {bubbles:true, composed:true, detail:null}));
+				}
+			}
+
+			customElements.define(ContenidoView.is,ContenidoView);
+
+		})(window.contenidoView)
+	</script>
+</dom-module>

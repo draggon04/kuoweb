@@ -1,0 +1,52 @@
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="../css/base.html">
+<link rel="import" href="../contenido/contenido-view.html">
+<link rel="import" href="../mis-icons.html">
+<link rel="import" href="unidades-edit.html">
+
+<dom-module id="unidades-view">
+	<template>
+		<style include="base">
+			.btnAdd{
+				width: 50px;
+				height: 50px;
+			}
+		</style>
+		<contenido-view on-open-edit="_openEdit">
+			<iron-icon slot="header-icon" class="icon-style" icon="mis-icons:icn-menu-unidades"></iron-icon>
+			<span slot="header-text">Unidades</span>
+		</contenido-view>
+		<unidades-edit open-dialog="{{openDialog}}"></unidades-edit>
+	</template>
+	<script>
+		
+		(function unidadesViewDefinition(unidadesView){		
+			'use strict'
+
+			class UnidadesView extends Polymer.Element{
+				static get is(){return 'unidades-view';}
+
+				_openEdit(event){
+					console.log('abrir dialogo');
+					this.openDialog=true;
+				}
+
+				static get properties(){
+					return{
+						openDialog:{
+							type:Boolean,
+							value:false,
+							notify:true
+						}
+					}
+				}
+			}
+
+			customElements.define(UnidadesView.is, UnidadesView);
+		})(window.unidadesView);
+
+	</script>
+</dom-module>
