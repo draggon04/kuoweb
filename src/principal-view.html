@@ -12,6 +12,7 @@
 <link rel="import" href="unidades/unidades-view.html">
 <link rel="import" href="css/base.html">
 <link rel="import" href="mis-icons.html">
+<link rel="import" href="unidades/unidades-edit.html">
 
 <dom-module id="principal-view">
 	<template>
@@ -49,12 +50,12 @@
 					<app-toolbar main-title><div>Main title</div></app-toolbar>
 				</app-header>
 				<iron-pages selectec="[[view]]" attr-for-selected="name" role="main">
-					<unidades-view name="unidades"></unidades-view>
+					<unidades-view  on-open-edit1="_openEdit" name="unidades"></unidades-view>
 				</iron-pages>
 			</app-header-layout>
 
 		</app-drawer-layout>
-
+		<unidades-edit open-dialog="{{openDialog}}"></unidades-edit>
 	</template>
 	<script>
 		
@@ -72,6 +73,11 @@
 						},
 						view:String
 					}
+				}
+
+				_openEdit(event){
+					console.log('abrir dialogo');
+					this.openDialog=true;
 				}
 
 				static get observers(){

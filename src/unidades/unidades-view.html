@@ -6,6 +6,7 @@
 <link rel="import" href="../contenido/contenido-view.html">
 <link rel="import" href="../mis-icons.html">
 <link rel="import" href="unidades-edit.html">
+<link rel="import" href="unidades-list.html">
 
 <dom-module id="unidades-view">
 	<template>
@@ -15,11 +16,12 @@
 				height: 50px;
 			}
 		</style>
-		<contenido-view on-open-edit="_openEdit">
+		<contenido-view  on-open-edit="_openEdit">
 			<iron-icon slot="header-icon" class="icon-style" icon="mis-icons:icn-menu-unidades"></iron-icon>
 			<span slot="header-text">Unidades</span>
+			<unidades-list unidades="[[unidades]]" slot="grid"><unidades-list>
 		</contenido-view>
-		<unidades-edit open-dialog="{{openDialog}}"></unidades-edit>
+		<!--<unidades-edit on-open-edit="_openEdit" open-dialog="{{openDialog}}"></unidades-edit>-->
 	</template>
 	<script>
 		
@@ -31,7 +33,8 @@
 
 				_openEdit(event){
 					console.log('abrir dialogo');
-					this.openDialog=true;
+					//this.openDialog=true;
+					this.dispatchEvent(new CustomEvent('open-edit1',{bubbles:true, composed:true, detail:null}));
 				}
 
 				static get properties(){
@@ -40,6 +43,20 @@
 							type:Boolean,
 							value:false,
 							notify:true
+						},
+						unidades:{
+							type:Array,
+							value:[{numero:'0002', nombre:'CIA 1', estado:'YUCATÁN', longitud:20.2301090000, latitud:-89.5998610000},
+									{numero:'0003', nombre:'XUL', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'CHOCHOLA', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'CIA 2', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'COORPORATIVO MERIDA', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'BASCULA KULKABA', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'BASCULA KINCHIL', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'COORPORATIVO PRODUCCION', estado:'YUCATÁN', longitud:20.9893690000, latitud:-89.6128210000},
+									{numero:'0003', nombre:'CHUMAYEL', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'CHAPAB 1', estado:'YUCATÁN', longitud:20.037924, latitud:-89.385342},
+									{numero:'0003', nombre:'Planta Procesadora Uman', estado:'YUCATÁN', longitud:20.8563254000, latitud:-89.7679567300}]
 						}
 					}
 				}

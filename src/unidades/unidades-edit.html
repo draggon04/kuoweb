@@ -9,15 +9,13 @@
 	<template>
 
 		<style include="base">
-			.contenedor{
-				display: block;
-			}
+
 			.fila{
-				display: inline-flex;
+				display: table-row;
 				width: 100%;
 			}
 			.celda{
-				display: inline;
+				display: table-cell;
 			}
 
 			label, input{
@@ -28,15 +26,15 @@
 				height: 2.5rem;
 			}
 
-			paper-dialog{
-				position: absolute;
+			paper-dialog.position{
+				top:110px;
 			}
 
 		</style>
 
-		<paper-dialog id="edit">
+		<paper-dialog class="position" id="edit" modal>
 			<h1>[[titulo]]</h1>
-			<div class="contenedor">
+			<div>
 				<div class="fila">
 					<div class="celda">
 						<label for="numero">Número</label>
@@ -89,6 +87,9 @@
 						<input type="text" id="longitud">
 					</div>
 				</div>
+			</div>
+			<div class="buttons">
+				<paper-button dialog-dismiss>Cancelar</paper-button>
 			</div>		
 		</paper-dialog>
 	</template>
