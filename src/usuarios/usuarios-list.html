@@ -8,7 +8,7 @@
 <link rel="import" href="../mis-icons.html">
 <link rel="import" href="../css/table-style.html">
 
-<dom-module id="unidades-list">
+<dom-module id="usuarios-list">
 	<template>
 		<style include="table-style">
 			
@@ -16,22 +16,23 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>Número</th>
-					<th>Nombre</th>
-					<th>Estado</th>
-					<th>Longitud</th>
-					<th>Latitud</th>
+					<th>Número de empleado</th>
+					<th>Perfil de Usuario</th>
+					<th>Email</th>
+					<th>Usuario</th>
+					<th>Nombre</th>					
+					<th>Hablilitado</th>
 					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<template is="dom-repeat" items="[[unidades]]" as="unidad">
+				<template is="dom-repeat" items="[[usuarios]]" as="unidad">
 					<tr>
-						<td>[[unidad.numero]]</td>
+						<td>[[unidad.NumEmpleado]]</td>
+						<td>[[unidad.DescPerfil]]</td>
+						<td>[[unidad.Email]]</td>
+						<td>[[unidad.Usuario]]</td>
 						<td>[[unidad.nombre]]</td>
-						<td>[[unidad.estado]]</td>
-						<td>[[unidad.longitud]]</td>
-						<td>[[unidad.latitud]]</td>
 						<td>
 							<iron-icon icon="icons:visibility"></iron-icon>
 							<iron-icon class="icon-edit" icon="image:edit"></iron-icon>
@@ -58,11 +59,11 @@
 	</template>
 	<script>
 		
-	(function unidadesListDefinition(unidadesList){
+	(function unidadesListDefinition(usuariosList){
 		'use strict'
 
-		class UnidadesList extends Polymer.Element{
-			static get is(){return 'unidades-list'; }
+		class UsuariosList extends Polymer.Element{
+			static get is(){return 'usuarios-list'; }
 
 			static get properties(){
 				return{
@@ -79,9 +80,9 @@
 			}
 		}
 
-		customElements.define(UnidadesList.is, UnidadesList);
+		customElements.define(UsuariosList.is, UsuariosList);
 
-	})(window.unidadesList);
+	})(window.usuariosList);
 
 	</script>
 </dom-module>

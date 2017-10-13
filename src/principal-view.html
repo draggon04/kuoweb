@@ -6,17 +6,21 @@
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/shadycss/apply-shim.html">
 
 <link rel="import" href="unidades/unidades-view.html">
+<link rel="import" href="unidades/unidades-edit.html">
 <link rel="import" href="css/base.html">
 <link rel="import" href="mis-icons.html">
-<link rel="import" href="unidades/unidades-edit.html">
+<link rel="import" href="usuarios/usuarios-view.html">
+<link rel="import" href="usuarios/usuario-edit.html">
 
 <dom-module id="principal-view">
 	<template>
-		<style define="base">
+		<style include="base">
 			.opcion{
 				width: 100%;
 				background-color: #7e2a41;
@@ -49,13 +53,15 @@
 				<app-header slot="header">
 					<app-toolbar main-title><div>Main title</div></app-toolbar>
 				</app-header>
-				<iron-pages selectec="[[view]]" attr-for-selected="name" role="main">
-					<unidades-view  on-open-edit1="_openEdit" name="unidades"></unidades-view>
+				<iron-pages selected="[[view]]" attr-for-selected="name" role="main">
+					<unidades-view on-open-edit="_openEditUnidades" name="unidades"></unidades-view>
+					<usuarios-view on-open-edit="_openEditUsuarios" name="usuarios"></usuarios-view>
 				</iron-pages>
 			</app-header-layout>
 
 		</app-drawer-layout>
-		<unidades-edit open-dialog="{{openDialog}}"></unidades-edit>
+		<unidades-edit open-dialog="{{openDialogUnidades}}"></unidades-edit>
+		<usuario-edit open-dialog="{{openDialogUsuarios}}"></usuario-edit>
 	</template>
 	<script>
 		
@@ -75,9 +81,12 @@
 					}
 				}
 
-				_openEdit(event){
-					console.log('abrir dialogo');
-					this.openDialog=true;
+				_openEditUnidades(event){
+					this.openDialogUnidades=true;
+				}
+
+				_openEditUsuarios(event){
+					this.openDialogUsuarios=true;
 				}
 
 				static get observers(){
@@ -85,7 +94,6 @@
 				}
 				
 				_routeDataChanged(view){
-					console.log('_routeDataChanged');
 					this.view = view || 'unidades';
 				}
 

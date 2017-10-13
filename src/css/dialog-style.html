@@ -1,0 +1,30 @@
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="base.html">
+
+<dom-module id="dialog-style">
+	<template>
+		<style is="dialog-style" include="base">
+			.fila{
+				display: table-row;
+				width: 100%;
+			}
+			.celda{
+				display: table-cell;
+			}
+
+			label, input{
+				display: block;
+			}
+
+			input, select{
+				height: 2.5rem;
+				width: 100%
+			}
+
+			paper-dialog.position{
+				top:110px;
+			}
+		</style>
+	</template>
+</dom-module>

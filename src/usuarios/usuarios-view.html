@@ -1,0 +1,53 @@
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="../css/base.html">
+<link rel="import" href="../components/main-component.html">
+<link rel="import" href="../mis-icons.html">
+<link rel="import" href="usuarios-list.html">
+
+<dom-module id="usuarios-view">
+	<template>
+		<style include="base">
+			
+		</style>
+		<main-component button-search="false" on-search="_search">
+			<iron-icon slot="header-icon" icon="mis-icons:icn-menu-usuarios"></iron-icon>
+			<span slot="header-text">Usuarios</span>
+			<usuarios-list usuarios="[[usuarios]]" slot="grid"></usuarios-list>
+		</main-component>
+	</template>
+	<script>
+		
+		(function usuariosViewDefinition(usuariosView){
+			'use strict'
+
+			class UsuariosView extends Polymer.Element{
+				static get is(){return 'usuarios-view';}
+
+				static get properties(){
+					return{
+						usuarios:{
+							type:Array,
+							value:[ {NumEmpleado:"33837",DescPerfil:"Supervisor",Email:"jose.euan@keken.com.mx",Usuario:"jose.euan@keken.com.mx",nombre:"JOSE MANUEL DE ATOCHA EUAN MOGUEL"},
+									{NumEmpleado:"39972",DescPerfil:"Supervisor",Email:"wilfrido.gamboa@keken.com.mx",Usuario:"wilfrido.gamboa@keken.com.mx",nombre:"WILFRIDO RODRIGO GAMBOA AYALA"},
+									{NumEmpleado:"44681",DescPerfil:"Supervisor",Email:"rodolfo.tuz@keken.com.mx",Usuario:"rodolfo.tuz@keken.com.mx",nombre:"RODOLFO TUZ LOPEZ"},
+									{NumEmpleado:"44699",DescPerfil:"Supervisor",Email:"pablo.cabrera@keken.com.mx",Usuario:"pablo.cabrera@keken.com.mx",nombre:"PABLO GERMAN CABRERA MAFUN"},
+									{NumEmpleado:"12781",DescPerfil:"Supervisor",Email:"victor.luna@keken.com.mx",Usuario:"victor.luna@keken.com.mx",nombre:"VICTOR HUMBERTO LUNA COCOM"},
+									{NumEmpleado:"49184",DescPerfil:"Supervisor",Email:"mauricio.zapata@keken.com.mx",Usuario:"mauricio.zapata@keken.com.mx",nombre:"MAURICIO RAMON ZAPATA LARA"},
+									{NumEmpleado:"47158",DescPerfil:"Supervisor",Email:"ricardo.gomez@keken.com.mx",Usuario:"ricardo.gomez@keken.com.mx",nombre:"RICARDO ALEJANDRO GOMEZ CORAL"},									{NumEmpleado:"12781",DescPerfil:"Supervisor",Email:"victor.luna@keken.com.mx",Usuario:"victor.luna@keken.com.mx",nombre:"VICTOR HUMBERTO LUNA COCOM"},
+									{NumEmpleado:"49184",DescPerfil:"Supervisor",Email:"mauricio.zapata@keken.com.mx",Usuario:"mauricio.zapata@keken.com.mx",nombre:"MAURICIO RAMON ZAPATA LARA"},
+									{NumEmpleado:"47158",DescPerfil:"Supervisor",Email:"ricardo.gomez@keken.com.mx",Usuario:"ricardo.gomez@keken.com.mx",nombre:"RICARDO ALEJANDRO GOMEZ CORAL"}
+							]
+						}
+					}
+				}
+			}
+
+			customElements.define(UsuariosView.is, UsuariosView);
+
+		})(window.usuariosView);
+
+	</script>
+</dom-module>

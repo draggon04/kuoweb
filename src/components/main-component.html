@@ -1,11 +1,12 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/shadycss/apply-shim.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/polymer/lib/elements/dom-if.html">
 
 <link rel="import" href="../css/base.html">
-<link rel="import" href="../contenido/search-button.html">
+<link rel="import" href="search-button.html">
 
-<dom-module id="contenido-view">
+<dom-module id="main-component">
 	<template>
 		<style include="base">
 			h2{
@@ -57,7 +58,9 @@
 				<div id="icon"><slot name="header-icon"></slot></div>
 				<h2><slot name="header-text"></slot></h2>
 				<paper-button raised on-click="_openEdit" class="button-add"><img class="img-button" src="../../images/btnAdd.PNG" alt=""></paper-button>
-				<search-button></search-button>
+				<template is="dom-if" if="[[buttonSearch]]">
+					<search-button></search-button>
+				</template>
 			</div>
 			<slot name="grid"></slot>
 			<slot name="view"></slot>
@@ -66,19 +69,34 @@
 
 	</template>
 	<script>		
-		(function contenidoViewDefinition(contenidoView){
+		(function mainComponentDefinition(mainComponent){
 			'use strict'
 
-			class ContenidoView extends Polymer.Element{
-				static get is(){return 'contenido-view';}
+			class MainComponent extends Polymer.Element{
+				static get is(){return 'main-component';}
+
+				static get properties(){
+					return{
+						buttonSearch:{
+							type:Boolean,
+							value:false,
+							notity:true,
+							observer:'_buttonSearchChange'
+						}
+					}
+				}
+
+				_buttonSearchChange(buttonSearch){
+					console.log(`_buttonSearchChange ${buttonSearch}`);
+				}
 
 				_openEdit(event){
 					this.dispatchEvent(new CustomEvent('open-edit', {bubbles:true, composed:true, detail:null}));
 				}
 			}
 
-			customElements.define(ContenidoView.is,ContenidoView);
+			customElements.define(MainComponent.is,MainComponent);
 
-		})(window.contenidoView)
+		})(window.mainComponent)
 	</script>
 </dom-module>

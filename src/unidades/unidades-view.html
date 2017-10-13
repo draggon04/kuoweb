@@ -3,7 +3,7 @@
 <link rel="import" href="../../bower_components/shadycss/apply-shim.html">
 
 <link rel="import" href="../css/base.html">
-<link rel="import" href="../contenido/contenido-view.html">
+<link rel="import" href="../components/main-component.html">
 <link rel="import" href="../mis-icons.html">
 <link rel="import" href="unidades-edit.html">
 <link rel="import" href="unidades-list.html">
@@ -16,12 +16,11 @@
 				height: 50px;
 			}
 		</style>
-		<contenido-view  on-open-edit="_openEdit">
+		<main-component button-search="false" on-search="_search">
 			<iron-icon slot="header-icon" class="icon-style" icon="mis-icons:icn-menu-unidades"></iron-icon>
 			<span slot="header-text">Unidades</span>
-			<unidades-list unidades="[[unidades]]" slot="grid"><unidades-list>
-		</contenido-view>
-		<!--<unidades-edit on-open-edit="_openEdit" open-dialog="{{openDialog}}"></unidades-edit>-->
+			<unidades-list unidades="[[unidades]]" on-page-change="_pageChange" slot="grid"><unidades-list>
+		</main-component>
 	</template>
 	<script>
 		
@@ -29,12 +28,15 @@
 			'use strict'
 
 			class UnidadesView extends Polymer.Element{
+
 				static get is(){return 'unidades-view';}
 
-				_openEdit(event){
-					console.log('abrir dialogo');
-					//this.openDialog=true;
-					this.dispatchEvent(new CustomEvent('open-edit1',{bubbles:true, composed:true, detail:null}));
+				_pageChange(event){
+
+				}
+
+				_search(event){
+					console.log(`texto a buscar ${event.detail.textSearch}`);
 				}
 
 				static get properties(){

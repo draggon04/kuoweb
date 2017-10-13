@@ -3,32 +3,12 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/shadycss/apply-shim.html">
 
-<link rel="import" href="../css/base.html">
+<link rel="import" href="../css/dialog-style.html">
 
 <dom-module id="unidades-edit">
 	<template>
 
-		<style include="base">
-
-			.fila{
-				display: table-row;
-				width: 100%;
-			}
-			.celda{
-				display: table-cell;
-			}
-
-			label, input{
-				display: block;
-			}
-
-			input{
-				height: 2.5rem;
-			}
-
-			paper-dialog.position{
-				top:110px;
-			}
+		<style include="dialog-style">
 
 		</style>
 
@@ -113,7 +93,6 @@
 				}
 
 				_openDialog(openDialog){
-					console.log('open-edit-unidad')
 					if(openDialog)
 						this.$.edit.open();
 					this.openDialog=false;

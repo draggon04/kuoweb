@@ -46,6 +46,7 @@
 
 		<input class="cajaTexto" id="texto" type="text">
 		<button class="buttonSearch" on-click="_search">Buscar</button>
+
 	</template>
 	<script>
 
@@ -54,6 +55,10 @@
 
 			class SearchButton extends Polymer.Element{
 				static get is(){return 'search-button';}
+
+				_search(event){
+					this.dispatchEvent(new CustomEvent('search',{bubbles:true, composed:true, detail:{textSearch:this.$.texto.value}}));
+				}
 			}
 
 			customElements.define(SearchButton.is, SearchButton);

@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/shadycss/apply-shim.html">
+
+<link rel="import" href="base.html">
+
+<dom-module id="table-style">
+	<template>
+		<style is="table-style" include="base">
+		
+			.table{
+				width: 100%;
+			}
+
+			.table td{
+				text-align: center;
+			}
+
+			.table tbody{
+				color:#999999;
+			}
+
+			.paginador{
+				display: block;
+				width: 400px;
+				margin: 0 auto;
+			}
+
+			.paginador li{
+				list-style-type: none;
+				display: inline;
+				background-color: white;
+				color: #7e2a41;
+				/*padding: 5px 6px;*/
+			}	
+
+			.paginador li button:hover{
+				list-style-type: none;
+				display: inline;
+				background-color: #7e2a41;
+				color: white;
+			}
+
+			.paginador li button{
+				text-decoration: none;
+				color: #7e2a41;
+				border:none;
+				background-color: white;
+			}
+
+			.icon-edit{
+				color:#56b768;
+			}
+
+			.icon-trash{
+				color:#ac0015;
+			}
+	</style></template>
+</dom-module>
